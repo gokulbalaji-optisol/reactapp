@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.header-wrapper {
+  width: auto;
+}
+
+.footer-wrapper {
+}
+
+.main-wrapper {
+  margin-top: 55px;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+.sidebar-wrapper {
+  flex-basis: 20rem;
+  flex-grow: 1;
+  list-style: none;
+}
+
+.content-wrapper {
+  flex-basis: 0;
+  flex-grow: 999;
+}
+
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+}
+
+.intl-tel-input {
+  width: 100%;
+}
+
+input {
+  padding-top: 2px;
+  margin-top: 5px;
+}
