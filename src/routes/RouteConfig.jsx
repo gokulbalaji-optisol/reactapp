@@ -10,6 +10,9 @@ import Genre from 'pages/Genres/Genre';
 import Login from 'pages/Auth/Login/Login';
 import Book from 'pages/Books/Book';
 import MainWrapper from 'pages/Layout/Main/MainWrapper';
+import TableLayout from 'components/Table/TableLayout';
+import ProtectedRoute from './ProtectedRoutes';
+import AdminDashBoard from 'pages/Admin/AdminDashBoard';
 
 const RouterConfig = () =>{
     return(
@@ -23,12 +26,20 @@ const RouterConfig = () =>{
                 </Route>
                  
                 <Route element={ <MainWrapper 
-                    path="public"
+                    sidebarPath="public"
                     / >} >
                     <Route path={GENRE} element={< Genre/>}/>
                     <Route path={BOOK} element={<Book/>} />
                 </Route>
-                
+                <Route element={<MainWrapper 
+                    sidebarPath="admin" 
+                    />} >
+                    <Route path="/dashboard" element={<AdminDashBoard /> } />
+                </Route>
+                <Route  path="/admin" element={<ProtectedRoute />}>
+                    <Route element={<MainWrapper />} >
+                    </Route>
+                </Route>
                 <Route path={ALL} element={<PageNotFound />}/>
             
             </Route>

@@ -2,8 +2,8 @@ import {  Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Navbar = () => {
          
-        const isLoggedIn =  false//useSelector(state => state.auth.isLoggedIn);
-        const user = false //useSelector(state => state.auth.user);
+        const isLoggedIn =  useSelector(state => state.auth.isLoggedIn);
+        const user = useSelector(state => state.auth.user);
         
         return (
             <>
@@ -31,14 +31,14 @@ const Navbar = () => {
                             {isLoggedIn ? 
                             
                             <div className="navbar-nav ml-auto">
-                                {user.role==="SELLER" && 
+                                {user.user.role==="SELLER" && 
                                     <li className="nav-item" >
                                         <Link to={"/seller/manage"} className="nav-link" >
                                         Manage
                                         </Link>
                                     </li>
                                 }
-                                {user.role==="ADMIN" && 
+                                {user.user.role==="ADMIN" && 
                                     <li className="nav-item" >
                                         <Link to={"/admin/manage"} className="nav-link" >
                                          Manage

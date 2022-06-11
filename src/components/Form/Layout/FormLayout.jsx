@@ -1,8 +1,12 @@
 import {Grid } from '@mui/material' 
 import { Formik , Form} from 'formik';
+import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , apicall , children , ...rest}) =>{
+    const dispatch = useDispatch();
+
     return(
         <Grid container >
             <Formik
@@ -11,8 +15,10 @@ const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , apicall , children
                 }}
                 validationSchema={FORM_VALIDATION}
                 onSubmit={async(values) => {
+                    
                     console.log(' from form main ',values);
                     const {data : dataConfig} = {...rest };
+                                   
                     const errHandler = (res) =>{
                         console.log("errr",res)
                         switch(res.status){
@@ -31,33 +37,35 @@ const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , apicall , children
                     } 
 
                     //experimental
-                    let data = new FormData();
-                    for ( var key in values ) {
-                        data.append(key, values[key]);
-                    }
+                    // let data = new FormData();
+                    // for ( var key in values ) {
+                    //     data.append(key, values[key]);
+                    // }
                     const DataObj = {
                         ...rest ? dataConfig : {},
-                        data:data
+                        data:values
                     }
-                    try {
-                        const response = apicall(DataObj);
-                        toast.promise(response , {
-                            pending:"saving",
-                            error: errHandler(response),
-                            success:"Saved Successfully"
-                        })
-                    } catch (err) {
-                        console.log(err);
-                        if (!err.response) {
-                            toast.info('No Server Response',{
-                                position: toast.POSITION.TOP_CENTER
-                              });
-                        } else if (err.response.status === 409) {
-                            toast.info('Username Taken');
-                        } else {
-                            toast.danger('Registration Failed')
-                        }
-                    }
+                    dispatch({...apicall , DataObj})
+                    // try {
+                    //     const response = apicall(DataObj);
+                    //     // toast.promise(response , {
+                    //     //     pending:"saving",
+                    //     //     error: errHandler(response),
+                    //     //     success:"Saved Successfully"
+                    //     // })
+                    //     console.log("response " , response);
+                    // } catch (err) {
+                    //     console.log(err);
+                    //     if (!err.response) {
+                    //         toast.info('No Server Response',{
+                    //             position: toast.POSITION.TOP_CENTER
+                    //           });
+                    //     } else if (err.response.status === 409) {
+                    //         toast.info('Username Taken');
+                    //     } else {
+                    //         toast.danger('Registration Failed')
+                    //     }
+                    // }
                 }}
                 >
                 <Form >

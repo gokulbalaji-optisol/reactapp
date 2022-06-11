@@ -30,7 +30,6 @@ export const SELLER_SIGNUP_FORM_VALIDATION = Yup.object().shape({
 export const LOGIN_FORM_VALIDATION = Yup.object().shape({
     email:Yup.string().email("Please Enter a Valid Email").required("Required"),
     password: Yup.string()
-    .min(8,"Please Enter atleast 8 characters")
     .required("Required"),
     
 })

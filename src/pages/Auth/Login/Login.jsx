@@ -14,10 +14,14 @@ import { USER_SIGNUP_SUBMIT_BUTTON_TEXT,
 import { LOGIN_INITIAL_FORM_STATE } from 'utils/initialFormState/auth';
 import { LOGIN_FORM_VALIDATION } from 'utils/validation/formValidation';
 import {login} from 'services/AuthServices';
+import sagaActions from 'redux/sagaActions';
 
 const INITITAL_FORM_STATE = LOGIN_INITIAL_FORM_STATE;
 const FORM_VALIDATION = LOGIN_FORM_VALIDATION;
 
+const apicall = {
+    type: sagaActions.AUTH_LOGIN,
+}
 
 const Login = () => {
 
@@ -25,11 +29,10 @@ const Login = () => {
         <div className=' container w-50'>
 
             <FormLayout
-            key="Login"
+
             INITITAL_FORM_STATE = {INITITAL_FORM_STATE}
             FORM_VALIDATION = {FORM_VALIDATION}
-            data={INITITAL_FORM_STATE}
-            apicall={login}    
+            apicall={apicall}    
             >
                 <FormControl
                     margin='normal'

@@ -35,20 +35,22 @@ const Genre = props =>{
     
     if (genres.length > 0){
         return(
-            <div key={genres.id}>
+            <div >
                 <div className='row w-100 justify-content-center'>
                 <div className='card-deck ml-5'>
-                {genres.map( (item , index) => 
-                             <div key={index} className="col-4 mt-5  d-flex">
-                                <div className ="card cards">
-                                    <img className="card-img cardsimg" src= {"http://localhost:3100/images/"+item.imgurl} alt="Card image" />
-                                    <Link to={"/genre/" + item.id} className="stretched-link"></Link>
-                                    <div className="card-img-overlay">
-                                        <p className='card-text'>{item.genre}</p>
-                                        <div>{item.id}</div>
-                                    </div>  
-                                </div>
-                             </div>               
+                {genres.map( (item , index) => {return(
+                    <div key={index} className="col-4 mt-5  d-flex">
+                    <div className ="card cards">
+                        <img className="card-img cardsimg" src= {"http://localhost:3100/images/"+item.imgurl} alt="Card image" />
+                        <Link to={"/genre/" + item.id} className="stretched-link"></Link>
+                        <div className="card-img-overlay">
+                            <p className='card-text'>{item.genre}</p>
+                            <div>{item.id}</div>
+                        </div>  
+                    </div>
+                 </div>
+                )}
+                                            
                 ) } 
                 </div>
                 </div>

@@ -9,7 +9,7 @@ import Cards from 'components/Layouts/Cards/Cards';
 
 const Book = (props)  =>{    
     const dispatch = useDispatch();
-    const {books , loading , hasErrors  , bookCount} = useSelector(bookSelector);
+    const {books , loading , hasErrors  , booksCount} = useSelector(bookSelector);
 
     const {setLoading} = props;
 
@@ -42,7 +42,7 @@ const Book = (props)  =>{
         return(
             <>
             { books.length > 0 ? 
-                <div key={books.id} className='row w-100 justify-content-center'>
+                <div  className='row w-100 justify-content-center'>
                         <div className='card-deck ml-5 p-5'>
                         {books.map( (item , index) => {
                             return(
@@ -63,7 +63,7 @@ const Book = (props)  =>{
                     previousLabel={'prev'}
                     nextLabel={'next'}
                     breakLabel={'...'}
-                    pageCount={Math.ceil(bookCount /9)}
+                    pageCount={Math.ceil(booksCount /9)}
                     marginPagesDisplayed={2}
                     onPageChange={handlePageClick}
                     containerClassName={'pagination ml-5 justify-content-center'}

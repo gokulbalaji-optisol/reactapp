@@ -6,14 +6,14 @@ import { useState } from 'react';
 import FormLayout from 'components/Form/Layout/FormLayout';
 import { SubmitButton } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
-import { genreSelector } from 'redux/slices/genre-slice';
+import { fetchGenreData, genreSelector } from 'redux/slices/genre-slice';
 import { Field, useFormikContext } from 'formik';
 import CheckBoxField from './FilterFields/CheckBoxField';
 import * as Yup from 'yup';
 import SliderField from './FilterFields/SliderField';
 import RadioBoxField from './FilterFields/RadioBoxField';
 import { fetchBookData, bookSelector } from 'redux/slices/book-slice';
-
+import {useEffect} from 'react'
 const FilterSideBar = () => {
     const [sliderValue, setSliderValue] = useState([20, 37]);
     const dispatch = useDispatch();
@@ -33,8 +33,15 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 const apicall = (obj) => {
     console.log(obj);
+    obj.data = {...obj.data , page:0 , limit:9}
     dispatch(fetchBookData(obj.data))
 }
+
+useEffect(()=>{
+    // if(genres.length<0){
+        dispatch(fetchGenreData(0))
+    //}
+},[])
 
     return (  
         <div className='p-5'>
@@ -43,7 +50,7 @@ const apicall = (obj) => {
         INITITAL_FORM_STATE={INITIAL_STATE}
         FORM_VALIDATION={FORM_VALIDATION}
         >
-            <CheckBoxField name="genre" />
+            <CheckBoxField name="genre"  data={genres}/>
             <RadioBoxField name="rating" />
             <SliderField name="range"/>
             

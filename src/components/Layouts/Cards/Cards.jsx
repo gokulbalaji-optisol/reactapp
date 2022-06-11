@@ -5,23 +5,23 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
 const Cards = (data) => {
-  console.log(data.props)
+  console.log("whsts this",data)
     return(
         <Card    sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   height="140"
-                  src={data.props.image}
+                  src={"http://localhost:3100/images/"+data.props.imgurl}
                   alt="green iguana"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                  <div>🌟{data.props.rating}</div>
+                  {/* <div>🌟{data.rating}</div> */}
                   {data.props.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                      {data.props.genre}
+                      {data.props.genre.genre}
                     </Typography>
                 </CardContent>
               </CardActionArea>

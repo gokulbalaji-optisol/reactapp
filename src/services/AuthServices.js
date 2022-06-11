@@ -1,11 +1,12 @@
 import { axiosapi } from "./api/createAPI";
 import { POST  , SELLER_SIGNUP , USER_SIGNUP , LOGIN } from "./CONSTANTS";
-export const login = ( data ) => {
+export const login = async( data ) => {
+    console.log("login apicall",data)
      return axiosapi({
         method : POST,
         url    : LOGIN,
-        data   : data,
-        headers: { 'Co7ntent-Type': 'application/json' }
+        data   : data.data,
+        headers: { 'Content-Type': 'application/json' }
     });
 };
 
