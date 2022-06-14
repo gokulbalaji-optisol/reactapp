@@ -13,3 +13,9 @@ export const bookColumns = [
     {field:"imgurl" , header:"Image" , type:"image" , prefix:true}
 ];
 
+
+export const bannerColumns = [
+    { field:"id" , header:"ID" , type:"text" },
+    { field:"sequence" , header:"sequence" , type:"text" },
+    {field:"img" , header:"Image" , type:"image" , prefix:true}
+];

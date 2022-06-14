@@ -13,6 +13,9 @@ import MainWrapper from 'pages/Layout/Main/MainWrapper';
 import TableLayout from 'components/Table/TableLayout';
 import ProtectedRoute from './ProtectedRoutes';
 import AdminDashBoard from 'pages/Admin/AdminDashBoard';
+import AddGenre from 'pages/Genres/AddGenre';
+import AdminAddBanner from 'pages/Admin/Add/AdminAddBanner';
+import AdminBanner from 'pages/Admin/AdminBanner';
 
 const RouterConfig = () =>{
     return(
@@ -34,7 +37,10 @@ const RouterConfig = () =>{
                 <Route element={<MainWrapper 
                     sidebarPath="admin" 
                     />} >
-                    <Route path="/dashboard" element={<AdminDashBoard /> } />
+                    <Route path="/admin/dashboard" element={<AdminDashBoard /> } />
+                    <Route path='/admin/addGenre' element={<AddGenre />} />
+                    <Route path='/admin/addBanner' element={<AdminAddBanner />} />
+                    <Route path='/admin/Banner' element={<AdminBanner />} />
                 </Route>
                 <Route  path="/admin" element={<ProtectedRoute />}>
                     <Route element={<MainWrapper />} >

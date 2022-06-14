@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 const AdminSideBar = () => {
     const data = [
         {text:"Dashboard" , link:"/dashboard"},
-        {text:"Genres" , link:"/genres"},
-        {text:"Books" , link:"/books"},
+        {text:"Genres" , link:"/admin/genres"},
+        {text:"Books" , link:"/admin/books"},
         {text:"Users" , link:"/users"},
         {text:"Orders" , link:"/orders"},
+        {text:"Banners" , link:"/admin/Banner"}
     ]
     return ( 
         <>
@@ -28,32 +29,7 @@ const AdminSideBar = () => {
             ))}
             </List>
         
-        
-        
-                <ul className="sidebar-nav">
-                <li className="sidebar-brand">
-                    <Link to="#">
-                        Admin Panel
-                    </Link>
-                    
-                </li>
-                <li>
-                    <Link to="manage">Dashboard</Link>
-                </li>
-                <li>
-                    <Link to="users">Users</Link>
-                </li>
-                <li>
-                    <Link to="books">Books</Link>
-                </li>
-                <li>
-                    <Link to="genres">Genres</Link>
-                </li>
-                <li>
-                    <Link to="orders">Orders</Link>
-                </li>
                 
-            </ul>
             </div>
         </>
      );

@@ -14,3 +14,7 @@ export const FETCH_ALL_GENRE = "/genre/getGenres";
 
 //Book
 export const FETCH_ALL_BOOK = "/book/getAllBook";
+
+//Banner
+export const FETCH_ALL_BANNER = "/banner/getAllBanner";
+export const ADD_BANNER = "/banner/add";

@@ -32,7 +32,8 @@ const Login = () => {
 
             INITITAL_FORM_STATE = {INITITAL_FORM_STATE}
             FORM_VALIDATION = {FORM_VALIDATION}
-            apicall={apicall}    
+            apicall={apicall} 
+            mode="DISPATCH"   
             >
                 <FormControl
                     margin='normal'

@@ -31,7 +31,7 @@ const AdminDashBoard = () => {
     ];
     return ( 
         <>
-            <TableLayout cols={genreCols} data={genreData} /> 
+            {/* <TableLayout cols={genreCols} data={genreData} />  */}
             <AdminGenre /> 
             <AdminBook />
         </>

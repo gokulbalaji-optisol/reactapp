@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , apicall , children , ...rest}) =>{
+const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , mode ,apicall , children , ...rest}) =>{
     const dispatch = useDispatch();
-
     return(
         <Grid container >
             <Formik
@@ -36,6 +35,28 @@ const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , apicall , children
                         }
                     } 
 
+                    const callAPI = (DataObj) =>{
+                        try {
+                            const response = apicall(DataObj);
+                            // toast.promise(response , {
+                            //     pending:"saving",
+                            //     error: errHandler(response),
+                            //     success:"Saved Successfully"
+                            // })
+                            console.log("response " , response);
+                        } catch (err) {
+                            console.log(err);
+                            if (!err.response) {
+                                toast.info('No Server Response',{
+                                    position: toast.POSITION.TOP_CENTER
+                                });
+                            } else if (err.response.status === 409) {
+                                toast.info('Username Taken');
+                            } else {
+                                toast.danger('Registration Failed')
+                            }
+                        }
+                    }
                     //experimental
                     // let data = new FormData();
                     // for ( var key in values ) {
@@ -45,27 +66,20 @@ const FormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION  , apicall , children
                         ...rest ? dataConfig : {},
                         data:values
                     }
-                    dispatch({...apicall , DataObj})
-                    // try {
-                    //     const response = apicall(DataObj);
-                    //     // toast.promise(response , {
-                    //     //     pending:"saving",
-                    //     //     error: errHandler(response),
-                    //     //     success:"Saved Successfully"
-                    //     // })
-                    //     console.log("response " , response);
-                    // } catch (err) {
-                    //     console.log(err);
-                    //     if (!err.response) {
-                    //         toast.info('No Server Response',{
-                    //             position: toast.POSITION.TOP_CENTER
-                    //           });
-                    //     } else if (err.response.status === 409) {
-                    //         toast.info('Username Taken');
-                    //     } else {
-                    //         toast.danger('Registration Failed')
-                    //     }
-                    // }
+                    
+                    switch(mode){
+                        case 'APICALL':
+                                // CallApi(DataObj)
+                                callAPI(DataObj)
+                                break;
+                        case 'DISPATCH':
+                                dispatch({ ...apicall , DataObj})
+                                break;
+                        default:
+                            console.log("NO API")
+                    }
+                    
+                    
                 }}
                 >
                 <Form >

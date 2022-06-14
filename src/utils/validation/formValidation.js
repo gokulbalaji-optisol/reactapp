@@ -33,3 +33,15 @@ export const LOGIN_FORM_VALIDATION = Yup.object().shape({
     .required("Required"),
     
 })
+
+
+export const ADD_GENRE_FORM_VALIDATION = Yup.object().shape({
+    genre: Yup.string()
+    .required("Required"),
+    
+})
+
+export const ADD_BANNER_FORM_VALIDATION = Yup.object().shape({
+    sequence: Yup.number().required("Required"),
+    
+})

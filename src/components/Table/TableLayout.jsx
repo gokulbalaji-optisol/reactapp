@@ -11,10 +11,11 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { TableFooter, TablePagination } from '@mui/material';
+import TableRowComponent from './TableRowComponent';
 
 
 
-const TableLayout = ({cols,data}) => {
+const TableLayout = ({cols,data ,children}) => {
 
     return ( 
         <>
@@ -30,44 +31,9 @@ const TableLayout = ({cols,data}) => {
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {data.map((item,index) => (
-                            <TableRow>
-                                {cols.map((col,index)=>(
-                                    <TableCell>
-                                        {col.type === "image" ?
-                                            <img alt="image12" height={34} width={34} src={ col.prefix ?
-                                                "http://localhost:3100/images/"+item[col.field] 
-                                                :
-                                                item[col.field] } /> 
-                                            :
-                                            //item[col.field] ||  
-                                            (col.field).split('.').reduce((o,i)=>o[i], item) }
-                                    </TableCell>
-                                ))}
-                            </TableRow>    
-                        )
-                    )}
+                        <TableRowComponent data={data} cols={cols}></TableRowComponent>
                     </TableBody>
-                    <TableFooter>
-                        <TableRow>
-                            <TablePagination
-                                rowsPerPageOptions={[5, 10]}
-                                colSpan={3}
-                                count={50}
-                                rowsPerPage={5}
-                                page={0}
-                                SelectProps={{
-                                    inputProps: {
-                                    'aria-label': 'rows per page',
-                                    },
-                                    native: true,
-                                }}
-                                //onPageChange={handleChangePage}
-                                //onRowsPerPageChange={handleChangeRowsPerPage}
-                                //ActionsComponent={TablePaginationActions}
-                            />
-                        </TableRow>
-                    </TableFooter>
+                    {children}
                 </Table>
                 </TableContainer>
         </>
