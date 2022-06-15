@@ -1,7 +1,8 @@
 export const genreColumns = [
     { field:"id" , header:"ID" , type:"text" },
     { field:"genre" , header:"Title" , type:"text"},
-    {field:"imgurl" , header:"Image" , type:"image" , prefix:true}
+    {field:"imgurl" , header:"Image" , type:"image" , prefix:true},
+    {header:"Action"}
 ];
 
 export const bookColumns = [
@@ -10,12 +11,14 @@ export const bookColumns = [
     { field:"price" , header:"Price" , type:"text"},
     { field:"desc" , header:"Description" , type:"text"},
     { field:"genre.genre" , header:"Genre" , type:"text"},
-    {field:"imgurl" , header:"Image" , type:"image" , prefix:true}
+    {field:"imgurl" , header:"Image" , type:"image" , prefix:true},
+    {header:"Action"}
 ];
 
 
 export const bannerColumns = [
     { field:"id" , header:"ID" , type:"text" },
     { field:"sequence" , header:"sequence" , type:"text" },
-    {field:"img" , header:"Image" , type:"image" , prefix:true}
+    {field:"img" , header:"Image" , type:"image" , prefix:true},
+    {header:"Action"}
 ];

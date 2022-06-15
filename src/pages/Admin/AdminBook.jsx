@@ -45,12 +45,12 @@ const AdminBook = () => {
             <Button component={Link} to="/admin/addBook" color="primary" variant="contained">
                 Add Book
             </Button>
-            <TableLayout key="book" cols={bookColumns} data={books}>
+            <TableLayout key="book" cols={bookColumns} data={books} link="/book/">
             <TableFooter>
                         <TableRow>
                             <TablePagination
                                 rowsPerPageOptions={[5, 10]}
-                                colSpan={3}
+                                colSpan={7}
                                 count={booksCount}
                                 rowsPerPage={limit}
                                 page={page}

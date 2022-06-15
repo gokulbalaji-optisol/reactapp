@@ -1,4 +1,5 @@
 import TableLayout from "components/Table/TableLayout";
+import AdminBanner from "./AdminBanner";
 import AdminBook from "./AdminBook";
 import AdminGenre from "./AdminGenre";
 
@@ -34,6 +35,7 @@ const AdminDashBoard = () => {
             {/* <TableLayout cols={genreCols} data={genreData} />  */}
             <AdminGenre /> 
             <AdminBook />
+            <AdminBanner />
         </>
      );
 }

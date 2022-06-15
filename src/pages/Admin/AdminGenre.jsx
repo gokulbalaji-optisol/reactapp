@@ -39,7 +39,7 @@ const AdminGenre = () => {
             <Button component={Link} to="/admin/addGenre" color="primary" variant="contained">
                 Add Genre
             </Button>
-            <TableLayout cols={genreColumns} data={genres}>
+            <TableLayout cols={genreColumns} data={genres} link="/genre/" >
                     <TableFooter>
                             <TableRow>
                                 <TablePagination

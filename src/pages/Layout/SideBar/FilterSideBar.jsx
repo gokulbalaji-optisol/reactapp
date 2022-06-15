@@ -46,6 +46,7 @@ useEffect(()=>{
     return (  
         <div className='p-5'>
         <FormLayout
+        mode="APICALL"
         apicall={apicall}
         INITITAL_FORM_STATE={INITIAL_STATE}
         FORM_VALIDATION={FORM_VALIDATION}

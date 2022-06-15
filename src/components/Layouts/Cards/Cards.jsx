@@ -20,8 +20,12 @@ const Cards = (data) => {
                   {/* <div>🌟{data.rating}</div> */}
                   {data.props.title}
                   </Typography>
+                  <Typography>
+                  &#8377; {data.props.price}
+                    </Typography>
                   <Typography variant="body2" color="text.secondary">
                       {data.props.genre.genre}
+                      
                     </Typography>
                 </CardContent>
               </CardActionArea>
