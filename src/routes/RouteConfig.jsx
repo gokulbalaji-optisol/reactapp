@@ -25,7 +25,7 @@ const RouterConfig = () =>{
                     <Route path={HOME} element={<HomePage />} /> 
                     <Route path={LOGIN} element={< Login/>}/>
                     <Route path={USER_SIGNUP} element={< UserSignUp/>}/>
-                </Route>
+                </Route> 
                  
                 <Route element={ <MainWrapper sidebarPath="public"/ >} >
                     <Route path={GENRE} element={< Genre/>}/>
@@ -36,7 +36,7 @@ const RouterConfig = () =>{
                     <Route path='/admin/addGenre' element={<AddGenre />} />
                     <Route path='/admin/addBanner' element={<AdminAddBanner />} />
                     <Route path='/admin/Banner' element={<AdminBanner />} />
-                    
+
                 </Route>
                 <Route  path="/admin" element={<ProtectedRoute />}>
                     <Route element={<MainWrapper />} >
