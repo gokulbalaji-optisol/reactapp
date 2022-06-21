@@ -33,15 +33,15 @@ const Navbar = () => {
                             <div className="navbar-nav ml-auto">
                                 {user.user.role==="SELLER" && 
                                     <li className="nav-item" >
-                                        <Link to={"/seller/manage"} className="nav-link" >
+                                        <Link to={"/seller/dashboard"} className="nav-link" >
                                         Manage
                                         </Link>
                                     </li>
                                 }
                                 {user.user.role==="ADMIN" && 
                                     <li className="nav-item" >
-                                        <Link to={"/admin/manage"} className="nav-link" >
-                                         Manage
+                                        <Link to={"/admin/dashboard"} className="nav-link" >
+                                         Dashboard
                                         </Link>
                                     </li>
                                 }

@@ -7,7 +7,7 @@ import sagaActions from "redux/sagaActions";
 import { orderSelector } from "redux/slices/order-slice";
 import { orderColumns } from "./CONSTANTS";
 
-const AdminOrder = () => {
+const SellerOrder = () => {
   const dispatch = useDispatch();
   const { orders, loading, hasErrors, orderCount } = useSelector(orderSelector);
   const [page, setPage] = useState(0);
@@ -53,4 +53,4 @@ const AdminOrder = () => {
   );
 };
 
-export default AdminOrder;
+export default SellerOrder;

@@ -1,10 +1,10 @@
 import { axiosapi } from "./api/createAPI";
-import { ADMIN_FETCH_USER, GET } from "./CONSTANTS";
+import { GET  ,POST , FETCH_ALL_GENRE , ADMIN_FETCH_ORDER, ADMIN_FETCH_USER} from "./CONSTANTS";
 
-export const fetchAllUser = (props) => {
+export const fetchAllOrder = (props) => {
     console.log(props);
 
-    let url = ADMIN_FETCH_USER ;
+    let url = ADMIN_FETCH_ORDER ;
     url = url + (props.limit ? `?page=${props.page}&limit=${props.limit}` : '');
     return axiosapi({
         method : GET,
@@ -12,3 +12,4 @@ export const fetchAllUser = (props) => {
         headers: { 'Content-Type': 'application/json' }
     });
 }
+

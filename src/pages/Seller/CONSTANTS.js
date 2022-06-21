@@ -1,3 +1,4 @@
+//genre
 export const genreColumns = [
   { field: "id", header: "ID", type: "text" },
   { field: "genre", header: "Title", type: "text" },
@@ -5,6 +6,22 @@ export const genreColumns = [
   { header: "Action" },
 ];
 
+export const genreOptionData = [
+  {
+    link: "/seller/edit/",
+    buttonCSS: "fa-solid fa-pen",
+    color: "primary",
+  },
+  {
+    link: "/seller/delete/",
+    buttonCSS: "fa-solid fa-trash",
+    color: "error",
+  },
+];
+
+export const SellerGenreData = { genreColumns, genreOptionData };
+
+//Books
 export const bookColumns = [
   { field: "id", header: "ID", type: "text" },
   { field: "title", header: "Title", type: "text" },
@@ -15,38 +32,35 @@ export const bookColumns = [
   { header: "Action" },
 ];
 
-export const bannerColumns = [
-  { field: "id", header: "ID", type: "text" },
-  { field: "sequence", header: "sequence", type: "text" },
-  { field: "img", header: "Image", type: "image", prefix: true },
-  { header: "Action" },
-];
-
-export const orderColumns = [
-  { field: "id", header: "ID", type: "text" },
-  { field: "total", header: "Title", type: "text" },
-  { field: "delivery_number", header: "Price", type: "text" },
-];
-
-export const userColumns = [
-  { field: "id", header: "ID", type: "text" },
-  { field: "username", header: "Username", type: "text" },
-  { field: "email", header: "Email", type: "text" },
-  { field: "mobile", header: "Mobile", type: "text" },
-  { field: "Action" },
-];
-
-export const userOptionData = [
+export const bookOptionData = [
   {
-    link: "/admin/edit/",
+    link: "/seller/edit/",
     buttonCSS: "fa-solid fa-pen",
     color: "primary",
   },
   {
-    link: "/admin/delete/",
+    link: "/seller/delete/",
     buttonCSS: "fa-solid fa-trash",
     color: "error",
   },
 ];
 
-export const AdminUserData = { userColumns, userOptionData };
+export const SellerBookData = { bookColumns, bookOptionData };
+
+//Orders
+export const orderColumns = [
+  { field: "id", header: "ID", type: "text" },
+  { field: "total", header: "Title", type: "text" },
+  { field: "delivery_number", header: "Price", type: "text" },
+  { header: "Action" },
+];
+
+export const orderOptionData = [
+  {
+    link: "/seller/delete/",
+    buttonCSS: "fa-solid fa-trash",
+    color: "error",
+  },
+];
+
+export const SellerOrderData = { orderColumns, orderOptionData };

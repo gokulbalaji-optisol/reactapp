@@ -8,24 +8,29 @@ import { bannerSelector } from "redux/slices/banner-slice";
 import { bannerColumns } from "./CONSTANTS";
 
 const AdminBanner = () => {
+  const dispatch = useDispatch();
+  const { banners, loading, hasErrors } = useSelector(bannerSelector);
+  useEffect(() => {
+    dispatch({ type: sagaActions.FETCH_BANNER });
+  }, []);
+  useEffect(() => {}, [loading]);
+  return (
+    <>
+      <Button
+        component={Link}
+        to="/admin/addBook"
+        color="primary"
+        variant="contained"
+      >
+        Add Banner
+      </Button>
+      <TableLayout
+        data={banners}
+        cols={bannerColumns}
+        link="/admin/banner/"
+      ></TableLayout>
+    </>
+  );
+};
 
-    const dispatch = useDispatch();
-    const {banners , loading , hasErrors } = useSelector(bannerSelector);
-    useEffect(()=>{
-        
-        dispatch({type: sagaActions.FETCH_BANNER})    
-    },[])
-    useEffect(()=>{
-
-    },[loading])
-    return ( 
-        <>
-            <Button component={Link} to="/admin/addBook" color="primary" variant="contained">
-                Add Banner
-            </Button>
-            <TableLayout data={banners} cols={bannerColumns} ></TableLayout>
-        </>
-    );
-}
- 
 export default AdminBanner;

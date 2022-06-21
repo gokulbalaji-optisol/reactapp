@@ -1,14 +1,14 @@
 import { axiosapi } from "./api/createAPI";
-import { POST  , FETCH_ALL_BOOK} from "./CONSTANTS";
+import { POST, FETCH_ALL_BOOK, SELLER_FETCH_BOOK } from "./CONSTANTS";
 import { bookObj } from "./fakeData";
-export const fetchAllBook = (data) => { 
-    let url = FETCH_ALL_BOOK 
-    console.log("url",data)
-    return axiosapi({
-        method : POST,
-        data   : data,
-        url    : url,
-        headers: { 'Content-Type': 'application/json' }
-    });
-    //return bookObj();
+export const fetchAllBook = (obj) => {
+  let url = obj.url ? SELLER_FETCH_BOOK : FETCH_ALL_BOOK;
+
+  return axiosapi({
+    method: POST,
+    data: obj.data,
+    url: url,
+    headers: { "Content-Type": "application/json" },
+  });
+  //return bookObj();
 };

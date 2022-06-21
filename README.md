@@ -32,3 +32,15 @@
   - mui
 - routing
   - react-router-dom
+
+Class pascalcase
+db snakecase
+functions camelcase
+use eslint
+eslint
+prettier
+
+method function mocha chai unit test cases
+
+db datatype in decorators
+jsx to tsx

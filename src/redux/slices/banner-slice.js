@@ -3,7 +3,8 @@ import {bannerReducer} from "../reducers/bannerReducer";
 const initialState = {
     loading: false,
     hasErrors: false,
-    banners: []
+    banners: [],
+    banner:{}
 } 
 const bannerSlice = createSlice({
     name:'banners',
@@ -12,7 +13,7 @@ const bannerSlice = createSlice({
 })
 
 
-export const {getBanners , getBannerFailure , getBannerSuccess} = bannerSlice.actions;
+export const {getBanners , getBannerFailure , getBannerSuccess ,getBannerById , getBannerByIdSuccess , getBannerByIdFailure} = bannerSlice.actions;
 
 export const bannerSelector = state => state.banners;
 
