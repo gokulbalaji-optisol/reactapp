@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import sagaActions from "redux/sagaActions";
 import { fetchGenreData, genreSelector } from "redux/slices/genre-slice";
-import { genreColumns } from "./CONSTANTS";
+import { AdminGenreData } from "./CONSTANTS";
 
 const AdminGenre = () => {
     
@@ -13,6 +13,10 @@ const AdminGenre = () => {
     const {genres , loading , hasErrors , genreCount} = useSelector(genreSelector);
     const [page,setPage] = useState(0);
     const [limit,setLimit] = useState(5);
+
+    const genreColumns = AdminGenreData.genreColumns;
+    const optionData = AdminGenreData.genreOptionData;
+
     const handleChangePage = (event , newPage) => {
         console.log(event , newPage)
         setPage(newPage);
@@ -39,7 +43,7 @@ const AdminGenre = () => {
             <Button component={Link} to="/admin/addGenre" color="primary" variant="contained">
                 Add Genre
             </Button>
-            <TableLayout cols={genreColumns} data={genres} link="/genre/" >
+            <TableLayout cols={genreColumns} data={genres} options optionData={optionData} >
                     <TableFooter>
                             <TableRow>
                                 <TablePagination

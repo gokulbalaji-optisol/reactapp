@@ -8,12 +8,12 @@ export const genreColumns = [
 
 export const genreOptionData = [
   {
-    link: "/seller/edit/",
+    link: "/genre/edit/",
     buttonCSS: "fa-solid fa-pen",
     color: "primary",
   },
   {
-    link: "/seller/delete/",
+    link: "/genre/delete/",
     buttonCSS: "fa-solid fa-trash",
     color: "error",
   },
