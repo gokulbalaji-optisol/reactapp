@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import sagaActions from "redux/sagaActions";
 import { bannerSelector } from "redux/slices/banner-slice";
-import { bannerColumns } from "./CONSTANTS";
+import { AdminBannerData } from "./CONSTANTS";
 
 const AdminBanner = () => {
   const dispatch = useDispatch();
   const { banners, loading, hasErrors } = useSelector(bannerSelector);
+  const bannerColumns = AdminBannerData.bannerColumns;
+  const optionData = AdminBannerData.bannerOptionData;
   useEffect(() => {
     dispatch({ type: sagaActions.FETCH_BANNER });
   }, []);
@@ -18,7 +20,7 @@ const AdminBanner = () => {
     <>
       <Button
         component={Link}
-        to="/admin/addBook"
+        to="/admin/addBanner"
         color="primary"
         variant="contained"
       >
@@ -27,7 +29,8 @@ const AdminBanner = () => {
       <TableLayout
         data={banners}
         cols={bannerColumns}
-        link="/admin/banner/"
+        options
+        optionData={optionData}
       ></TableLayout>
     </>
   );

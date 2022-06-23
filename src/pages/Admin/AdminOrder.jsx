@@ -5,13 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import sagaActions from "redux/sagaActions";
 import { orderSelector } from "redux/slices/order-slice";
-import { orderColumns } from "./CONSTANTS";
+import { AdminOrderData } from "./CONSTANTS";
 
 const AdminOrder = () => {
   const dispatch = useDispatch();
   const { orders, loading, hasErrors, orderCount } = useSelector(orderSelector);
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
+  const orderColumns = AdminOrderData.orderColumns;
+  const optionData = AdminOrderData.userOptionData;
   const handleChangePage = (event, newPage) => {
     console.log(event, newPage);
     setPage(newPage);
@@ -33,7 +35,12 @@ const AdminOrder = () => {
   }, [page, limit]);
   return (
     <>
-      <TableLayout cols={orderColumns} data={orders} link="/order/">
+      <TableLayout
+        cols={orderColumns}
+        data={orders}
+        options
+        optionData={optionData}
+      >
         <TableFooter>
           <TableRow>
             <TablePagination

@@ -13,7 +13,7 @@ import Paper from "@mui/material/Paper";
 import { TableFooter, TablePagination } from "@mui/material";
 import TableRowComponent from "./TableRowComponent";
 
-const TableLayout = ({ cols, data, link, options, optionData, children }) => {
+const TableLayout = ({ cols, data = [], link, options, optionData, children }) => {
   return (
     <>
       <TableContainer component={Paper}>
@@ -26,13 +26,13 @@ const TableLayout = ({ cols, data, link, options, optionData, children }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRowComponent
+            {data.length > 0 && <TableRowComponent
               data={data}
               cols={cols}
               link={link}
               options={options}
               optionData={optionData}
-            ></TableRowComponent>
+            ></TableRowComponent>}
           </TableBody>
           {children}
         </Table>

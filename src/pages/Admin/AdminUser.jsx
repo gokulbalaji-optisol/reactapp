@@ -1,11 +1,12 @@
 import React from "react";
-import { TableFooter, TablePagination, TableRow } from "@mui/material";
+import { Button, TableFooter, TablePagination, TableRow } from "@mui/material";
 import TableLayout from "components/Table/TableLayout";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import sagaActions from "redux/sagaActions";
 import { userSelector } from "redux/slices/user-slice";
 import { AdminUserData } from "./CONSTANTS";
+import { Link } from "react-router-dom";
 
 const AdminUser = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,6 @@ const AdminUser = () => {
         <TableLayout
           cols={userColumns}
           data={users}
-          link="/user/"
           options
           optionData={optionData}
         >
