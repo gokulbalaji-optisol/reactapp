@@ -34,6 +34,7 @@ const SellerSignUp = () => {
             INITITAL_FORM_STATE = {INITITAL_FORM_STATE}
             FORM_VALIDATION = {FORM_VALIDATION}
             data={SellerSignUp_Data}
+            mode="APICALL"
             apicall={signUp}    
             >
                 <FormControl
