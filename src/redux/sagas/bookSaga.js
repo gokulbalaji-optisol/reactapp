@@ -18,7 +18,7 @@ export function* fetchBook(action) {
 export function* fetchSellerBook(action) {
   yield put(getBooks());
   try {
-    const response = yield fetchSellerBook({
+    const response = yield fetchAllBook({
       data: action.action,
       url: "seller",
     });
