@@ -35,6 +35,7 @@ import SellerDashBoard from "pages/Seller/SellerDashBoard";
 import SellerGenre from "pages/Seller/SellerGenre";
 import SellerBook from "pages/Seller/SellerBook";
 import SellerOrder from "pages/Seller/SellerOrder";
+import AddBook from "pages/Books/AddBook";
 
 const RouterConfig = () => {
   return (
@@ -42,8 +43,13 @@ const RouterConfig = () => {
       <Route path={BASE} element={<Layout />}>
         <Route element={<MainWrapper />}>
           <Route path={BASE} element={<HomePage />} />
+
           <Route path={LOGIN} element={<Login />} />
           <Route path={USER_SIGNUP} element={<UserSignUp />} />
+          <Route path={SELLER_SIGNUP} element={<SellerSignUp />} />
+          <Route path="addGenre" element={<AddGenre />} />
+          <Route path="addBook" element={<AddBook />} />
+
           <Route path="/users" element={<AdminUser />} />
         </Route>
 
@@ -63,7 +69,7 @@ const RouterConfig = () => {
             <Route path="banners" element={<AdminBanner />} />
 
             <Route path="addGenre" element={<AddGenre />} />
-            <Route path="addBook" element={<AddGenre />} />
+            <Route path="addBook" element={<AddBook />} />
             <Route path="addBanner" element={<AdminAddBanner />} />
 
             <Route path="genre/edit/:id" element={<AdminEditBanner />} />

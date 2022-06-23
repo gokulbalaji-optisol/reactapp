@@ -13,10 +13,12 @@ import {
 import { Link } from "react-router-dom";
 const AdminSideBar = () => {
   const data = [
-    { text: "Dashboard", link: "/dashboard" },
-    { text: "Genres", link: "/admin/genres" },
-    { text: "Books", link: "/admin/books" },
-    { text: "Orders", link: "/orders" },
+    { text: "Dashboard", link: "/seller/dashboard" },
+    { text: "Genres", link: "/seller/genres" },
+    { text: "Books", link: "/seller/books" },
+    { text: "Orders", link: "/seller/orders" },
+    { text: "AddBook", link: "/addBook" },
+    { text: "AddGenre", link: "/addGenre" },
   ];
   return (
     <>

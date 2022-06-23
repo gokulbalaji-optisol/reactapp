@@ -33,6 +33,7 @@ const SellerBook = () => {
   };
 
   useEffect(() => {
+    console.log("render")
     let action = { page: page, limit: limit };
     dispatch({ type: sagaActions.SELLER_FETCH_BOOK, action });
   }, []);

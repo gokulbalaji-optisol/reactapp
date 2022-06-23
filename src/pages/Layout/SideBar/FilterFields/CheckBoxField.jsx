@@ -21,18 +21,6 @@ const CheckBoxField = ({name , data , ...props}) => {
                 <Typography>
                     Genres
                 </Typography>
-                
-                 {/* {genres.map((item , index)=> {
-                    return(
-                    <Field
-                        type = "checkbox"
-                        as ={Checkbox}
-                        label={item}
-                        value= {item}
-                        name="genre"
-                        // onChange={handleChange}
-                        /> )}
-                )}    */}
                 {genres.map((item,index)=>{
                     return(
                     <FormControlLabel
@@ -43,18 +31,7 @@ const CheckBoxField = ({name , data , ...props}) => {
                         />    
                     )}
                 )}
-                {/* <FormControlLabel
-                    control={ <Checkbox {...label} />}
-                    label ="Horror"
-                    value ="Horror"
-                    name='genre' 
-                />
-                <FormControlLabel
-                    control={ <Checkbox {...label} />}
-                    label ="Fantasy"
-                    value ="Fantasy"
-                    name='genre'
-                /> */}
+                
             </FormGroup>
             
     )

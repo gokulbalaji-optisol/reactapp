@@ -24,12 +24,12 @@ const SellerOrder = () => {
 
   useEffect(() => {
     let action = { page: page, limit: limit };
-    dispatch({ type: sagaActions.ADMIN_FETCH_ORDER, action });
+    dispatch({ type: sagaActions.SELLER_FETCH_ORDER, action });
   }, []);
   useEffect(() => {}, [loading]);
   useEffect(() => {
     let action = { page: page, limit: limit };
-    dispatch({ type: sagaActions.ADMIN_FETCH_ORDER, action });
+    dispatch({ type: sagaActions.SELLER_FETCH_ORDER, action });
   }, [page, limit]);
   return (
     <>
