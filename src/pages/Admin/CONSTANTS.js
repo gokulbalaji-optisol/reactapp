@@ -70,18 +70,36 @@ export const bannerOptionData = [
 ];
 export const AdminBannerData = { bannerColumns, bannerOptionData };
 
+//orders
+
 export const orderColumns = [
   { field: "id", header: "ID", type: "text" },
   { field: "total", header: "Title", type: "text" },
   { field: "delivery_number", header: "Price", type: "text" },
+  {header:"Action"},
 ];
+export const orderOptionData = [
+  {
+    link: "/order/edit/",
+    buttonCSS: "fa-solid fa-pen",
+    color: "primary",
+  },
+  {
+    link: "/order/delete/",
+    buttonCSS: "fa-solid fa-trash",
+    color: "error",
+  },
+];
+export const AdminOrderData = { orderColumns, orderOptionData };
 
+
+//users
 export const userColumns = [
   { field: "id", header: "ID", type: "text" },
   { field: "username", header: "Username", type: "text" },
   { field: "email", header: "Email", type: "text" },
   { field: "mobile", header: "Mobile", type: "text" },
-  { field: "Action" },
+  { header: "Action" },
 ];
 
 export const userOptionData = [
