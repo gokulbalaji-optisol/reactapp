@@ -25,7 +25,8 @@ const TableRowComponent = ({
                       width={34}
                       src={
                         col.prefix
-                          ? "http://localhost:3100/images/" + item[col.field]
+                          ? "http://localhost:3100/images/" +
+                            col.field.split(".").reduce((o, i) => o[i], item)
                           : item[col.field]
                       }
                     />
@@ -46,18 +47,25 @@ const TableRowComponent = ({
           {options && (
             <TableCell>
               {optionData.length > 0 &&
-                optionData.map((i, index) => (
-                  <Button
-                    key={i + index}
-                    size="large"
-                    component={Link}
-                    to={i.link + item.id}
-                    color={i.color}
-                    variant="contained"
-                  >
-                    <i className={i.buttonCSS}></i>
-                  </Button>
-                ))}
+                optionData.map((i, index) => {
+                  let config = i.apicall
+                    ? { onClick: (e) => i.api(item.id) }
+                    : {
+                        component: Link,
+                        to: i.link + item.id,
+                      };
+                  return (
+                    <Button
+                      key={i + index}
+                      size="large"
+                      {...config}
+                      color={i.color}
+                      variant="contained"
+                    >
+                      <i className={i.buttonCSS}></i>
+                    </Button>
+                  );
+                })}
             </TableCell>
           )}
         </TableRow>
