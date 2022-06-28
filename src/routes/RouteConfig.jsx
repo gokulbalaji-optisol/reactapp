@@ -36,6 +36,7 @@ import SellerGenre from "pages/Seller/SellerGenre";
 import SellerBook from "pages/Seller/SellerBook";
 import SellerOrder from "pages/Seller/SellerOrder";
 import AddBook from "pages/Books/AddBook";
+import Cart from "pages/Cart/Cart";
 
 const RouterConfig = () => {
   return (
@@ -58,6 +59,11 @@ const RouterConfig = () => {
           <Route path={BOOK} element={<Book />} />
         </Route>
 
+        <Route element={<ProtectedRoute user={["SELLER", "USER", "ADMIN"]} />}>
+          <Route element={<MainWrapper />}>
+            <Route path={"/cart"} element={<Cart />} />
+          </Route>
+        </Route>
         {/* admin */}
         <Route element={<ProtectedRoute user={["ADMIN"]} />}>
           <Route path="/admin" element={<MainWrapper sidebarPath="admin" />}>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, TableCell, TableRow } from "@mui/material";
 import { Link } from "react-router-dom";
+import CartButton from "pages/Cart/CartButton";
 
 const TableRowComponent = ({
   data,
@@ -48,23 +49,22 @@ const TableRowComponent = ({
             <TableCell>
               {optionData.length > 0 &&
                 optionData.map((i, index) => {
-                  let config = i.apicall
-                    ? { onClick: (e) => i.api(item.id) }
-                    : {
-                        component: Link,
-                        to: i.link + item.id,
-                      };
-                  return (
+                  return i.mode ? (
+                    i.component(item.id)
+                  ) : (
                     <Button
                       key={i + index}
                       size="large"
-                      {...config}
+                      component={Link}
+                      to={i.link + item.id}
                       color={i.color}
                       variant="contained"
+                      
                     >
                       <i className={i.buttonCSS}></i>
                     </Button>
                   );
+                  // );
                 })}
             </TableCell>
           )}

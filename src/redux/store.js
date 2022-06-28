@@ -7,6 +7,7 @@ import { rootSaga } from "./sagas";
 import bannerSlice from "./slices/banner-slice";
 import orderSlice from "./slices/order-slice";
 import userSlice from "./slices/user-slice";
+import cartSlice from "./slices/cart-slice";
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -19,6 +20,7 @@ const store = configureStore({
     banners: bannerSlice.reducer,
     orders: orderSlice.reducer,
     users: userSlice.reducer,
+    carts:cartSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

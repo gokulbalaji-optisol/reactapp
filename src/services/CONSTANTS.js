@@ -30,3 +30,10 @@ export const ADMIN_FETCH_USER = "/admin/getUsers";
 //Seller
 export const SELLER_FETCH_BOOK = "/seller/getBooks";
 export const SELLER_FETCH_ORDER = "/seller/getOrders";
+
+//cart
+export const FETCH_ALL_CART = "/cart/getAll";
+export const ADD_CART_ITEM = "/cart/add";
+export const DELETE_CART_ITEM = "/cart/delete";
+export const INC_CART_ITEM = "/cart/updateinc";
+export const DEC_CART_ITEM = "/cart/updatedec";

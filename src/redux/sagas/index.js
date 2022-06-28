@@ -2,6 +2,7 @@ import { all } from "redux-saga/effects";
 import { watchAuthAsync } from "./authSaga";
 import { watchBannerAsync } from "./bannerSaga";
 import { watchBookAsync } from "./bookSaga";
+import { watchCartAsync } from "./cartSaga";
 import { watchGenreAsync } from "./genreSaga";
 import { watchOrderAsync } from "./orderSaga";
 import { watchUserAsync } from "./userSaga";
@@ -14,5 +15,6 @@ export function* rootSaga() {
     watchBannerAsync(),
     watchOrderAsync(),
     watchUserAsync(),
+    watchCartAsync()
   ]);
 }

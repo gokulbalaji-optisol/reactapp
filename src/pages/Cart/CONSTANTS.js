@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { cartServices } from "services/CartServices";
+import CartButton from "./CartButton";
 
 export const cartColumns = [
   { field: "id", header: "ID", type: "text" },
@@ -12,24 +13,28 @@ export const cartColumns = [
 
 export const cartOptionData = [
   {
-    api: cartServices.updateIncCartItem.then((resp) => {
-      console.log(resp);
-    }),
-    buttonCSS: "fa-solid fa-plus",
+    //buttonCSS: "fa-solid fa-plus",
     color: "primary",
-    apicall: true,
+    component: (id) => (
+      <CartButton
+        mode="IncQuan"
+        id={id}
+        color="primary"
+        buttonCSS="fa-solid fa-plus"
+      />
+    ),
+    mode: true,
   },
   {
-    api: cartServices.updateDecCartItem,
-    buttonCSS: "fa-solid fa-minus",
+    //buttonCSS: "fa-solid fa-minus",
     color: "primary",
-    apicall: true,
+    component: (id) => <CartButton mode="DecQuan" />,
   },
   {
-    api: cartServices.delCartItem,
-    buttonCSS: "fa-solid fa-trash",
+    //buttonCSS: "fa-solid fa-trash",
+
     color: "error",
-    apicall: true,
+    component: (id) => <CartButton mode="DelCartItem" />,
   },
 ];
 export const CartData = { cartColumns, cartOptionData };
