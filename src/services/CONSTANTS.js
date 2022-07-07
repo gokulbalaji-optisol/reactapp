@@ -21,7 +21,7 @@ export const FETCH_ALL_BANNER = "/banner/getAllBanner";
 export const ADD_BANNER = "/banner/add";
 export const EDIT_BANNER = "/banner/edit";
 //Order
-export const FETCH_ALL_ORDER = "/order/getAllOrder";
+export const FETCH_ALL_ORDER = "/order/getAll";
 
 //Admin
 export const ADMIN_FETCH_ORDER = "/admin/getOrders";
@@ -37,3 +37,7 @@ export const ADD_CART_ITEM = "/cart/add";
 export const DELETE_CART_ITEM = "/cart/delete";
 export const INC_CART_ITEM = "/cart/updateinc";
 export const DEC_CART_ITEM = "/cart/updatedec";
+
+//payment
+
+export const PAYMENT_URL = "/payment/pay";
