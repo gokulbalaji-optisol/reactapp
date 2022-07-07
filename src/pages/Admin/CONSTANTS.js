@@ -20,8 +20,6 @@ export const genreOptionData = [
 ];
 export const AdminGenreData = { genreColumns, genreOptionData };
 
-
-
 //book
 export const bookColumns = [
   { field: "id", header: "ID", type: "text" },
@@ -32,7 +30,6 @@ export const bookColumns = [
   { field: "imgurl", header: "Image", type: "image", prefix: true },
   { header: "Action" },
 ];
-
 
 export const bookOptionData = [
   {
@@ -76,7 +73,7 @@ export const orderColumns = [
   { field: "id", header: "ID", type: "text" },
   { field: "total", header: "Title", type: "text" },
   { field: "delivery_number", header: "Price", type: "text" },
-  {header:"Action"},
+  { header: "Action" },
 ];
 export const orderOptionData = [
   {
@@ -91,7 +88,6 @@ export const orderOptionData = [
   },
 ];
 export const AdminOrderData = { orderColumns, orderOptionData };
-
 
 //users
 export const userColumns = [

@@ -43,16 +43,20 @@ const Navbar = () => {
                     </Link>
                   </li>
                 )}
-                <li className="nav-item">
-                  <Link to={"/order"} className="nav-link">
-                    Orders
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={"/cart"} className="nav-link">
-                    <i className="fas fa-shopping-cart"></i>Cart
-                  </Link>
-                </li>
+                {user.user.role === "USER" && (
+                  <>
+                    <li className="nav-item">
+                      <Link to={"/orders"} className="nav-link">
+                        Orders
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to={"/cart"} className="nav-link">
+                        <i className="fas fa-shopping-cart"></i>Cart
+                      </Link>
+                    </li>
+                  </>
+                )}
                 <li className="nav-item">
                   <Link to={"/logout"} className="nav-link">
                     Logout

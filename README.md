@@ -44,3 +44,8 @@ method function mocha chai unit test cases
 
 db datatype in decorators
 jsx to tsx
+
+dashboard graphs
+forgot password
+flex box for books
+yarmmail / yopmail ahem

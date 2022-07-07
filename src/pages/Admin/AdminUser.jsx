@@ -7,6 +7,7 @@ import sagaActions from "redux/sagaActions";
 import { userSelector } from "redux/slices/user-slice";
 import { AdminUserData } from "./CONSTANTS";
 import { Link } from "react-router-dom";
+import SearchField from "components/Form/Fields/SearchField";
 
 const AdminUser = () => {
   const dispatch = useDispatch();
@@ -38,27 +39,33 @@ const AdminUser = () => {
   return (
     <>
       {users.length > 0 && (
-        <TableLayout
-          cols={userColumns}
-          data={users}
-          options
-          optionData={optionData}
-        >
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[5, 10]}
-                colSpan={3}
-                count={usersCount}
-                rowsPerPage={limit}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                // ActionsComponent={TablePaginationActions}
-              />
-            </TableRow>
-          </TableFooter>
-        </TableLayout>
+        <>
+          <SearchField
+            label="userSearch"
+            type={sagaActions.ADMIN_FETCH_USER}
+          ></SearchField>
+          <TableLayout
+            cols={userColumns}
+            data={users}
+            options
+            optionData={optionData}
+          >
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10]}
+                  colSpan={3}
+                  count={usersCount}
+                  rowsPerPage={limit}
+                  page={page}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  // ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
+          </TableLayout>
+        </>
       )}
     </>
   );

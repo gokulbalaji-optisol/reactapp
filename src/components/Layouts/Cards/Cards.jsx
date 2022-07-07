@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import CartButtonAddToCart from "pages/Cart/CartButtonAddToCart";
+import CartButton from "pages/Cart/CartButton";
+import { cartServices } from "services/CartServices";
 
 const Cards = (data) => {
   console.log("whsts this", data);
@@ -39,7 +41,12 @@ const Cards = (data) => {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <CartButtonAddToCart id={data.props.id} />
+          <CartButton
+            id={data.props.id}
+            color="success"
+            buttonCSS="fas fa-shopping-cart"
+            apicall={cartServices.addCartItem}
+          />
         </CardActions>
       </CardActionArea>
     </Card>
