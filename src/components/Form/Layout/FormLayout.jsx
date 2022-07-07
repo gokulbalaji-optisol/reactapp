@@ -47,11 +47,11 @@ const FormLayout = ({
           const callAPI = (DataObj) => {
             try {
               const response = apicall(DataObj);
-              // toast.promise(response , {
-              //     pending:"saving",
-              //     error: errHandler(response),
-              //     success:"Saved Successfully"
-              // })
+              // toast.promise(response, {
+              //   pending: "saving",
+              //   error: errHandler(response),
+              //   success: "Saved Successfully",
+              // });
               console.log("response ", response);
             } catch (err) {
               console.log(err);
