@@ -37,6 +37,16 @@ import SellerBook from "pages/Seller/SellerBook";
 import SellerOrder from "pages/Seller/SellerOrder";
 import AddBook from "pages/Books/AddBook";
 import Cart from "pages/Cart/Cart";
+import Logout from "pages/Auth/Login/Logout";
+import Orders from "pages/Orders/Orders";
+import EnterEmail from "pages/Auth/ForgotPassword/EnterEmail";
+import EnterOTP from "pages/Auth/ForgotPassword/EnterOTP";
+import AdminCoupon from "pages/Admin/AdminCoupon";
+import AdminAddCoupon from "pages/Admin/Add/AdminAddCoupon";
+import AdminViewCoupon from "pages/Admin/AdminViewCoupon";
+import AdminAddPromo from "pages/Admin/Add/AdminAddPromo";
+import AdminEditPromoCode from "pages/Admin/Edit/AdminEditPromo";
+import AdminEditPromo from "pages/Admin/Edit/AdminEditPromo";
 
 const RouterConfig = () => {
   return (
@@ -48,10 +58,10 @@ const RouterConfig = () => {
           <Route path={LOGIN} element={<Login />} />
           <Route path={USER_SIGNUP} element={<UserSignUp />} />
           <Route path={SELLER_SIGNUP} element={<SellerSignUp />} />
+          <Route path="forgotpassword" element={<EnterEmail />} />
+          <Route path="enterotp" element={<EnterOTP />} />
           <Route path="addGenre" element={<AddGenre />} />
           <Route path="addBook" element={<AddBook />} />
-
-          <Route path="/users" element={<AdminUser />} />
         </Route>
 
         <Route element={<MainWrapper sidebarPath="public" />}>
@@ -62,6 +72,7 @@ const RouterConfig = () => {
         <Route element={<ProtectedRoute user={["SELLER", "USER", "ADMIN"]} />}>
           <Route element={<MainWrapper />}>
             <Route path={"/cart"} element={<Cart />} />
+            <Route path={"/orders"} element={<Orders />} />
           </Route>
         </Route>
         {/* admin */}
@@ -81,6 +92,12 @@ const RouterConfig = () => {
             <Route path="genre/edit/:id" element={<AdminEditBanner />} />
             <Route path="book/edit/:id" element={<AdminEditBanner />} />
             <Route path="banner/edit/:id" element={<AdminEditBanner />} />
+
+            <Route path="coupon" element={<AdminCoupon />} />
+            <Route path="coupon/view/:id" element={<AdminViewCoupon />} />
+            <Route path="addcoupon" element={<AdminAddCoupon />} />
+            <Route path="addPromo/:id" element={<AdminAddPromo />} />
+            <Route path="promocode/edit/:id" element={<AdminEditPromo />} />
           </Route>
         </Route>
 
@@ -100,7 +117,7 @@ const RouterConfig = () => {
             <Route path="banner/edit/:id" element={<AdminEditBanner />} />
           </Route>
         </Route>
-
+        <Route path={"/logout"} element={<Logout />} />
         <Route path={ALL} element={<PageNotFound />} />
       </Route>
     </Routes>
