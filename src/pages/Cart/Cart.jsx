@@ -1,4 +1,7 @@
 import TableLayout from "components/Table/TableLayout";
+import Payment from "pages/Payment/Payment";
+import { cartServices } from "services/CartServices";
+import CartButton from "./CartButton";
 import { CartData } from "./CONSTANTS";
 
 const { useEffect } = require("react");
@@ -9,6 +12,21 @@ const { cartSelector } = require("redux/slices/cart-slice");
 const Cart = () => {
   const dispatch = useDispatch();
   const { carts, hasErrors, loading, cartCount } = useSelector(cartSelector);
+
+  const computeSubtotal = (a, b) => {
+    console.log(a, b);
+    //subTotal.push(a * b);
+
+    return a * b;
+  };
+  const computeTotal = () => {
+    let tot = 0;
+    carts.map((item) => {
+      tot = computeSubtotal(item.quantity, item.book_id.price) + tot;
+    });
+    return tot;
+  };
+
   useEffect(() => {
     let action = { page: 0, limit: 5 };
     dispatch({ type: sagaActions.FETCH_CART, action });
@@ -48,51 +66,50 @@ const Cart = () => {
                   <td>{item.book_id.title}</td>
                   <td>{item.book_id.price}</td>
                   <td>
-                    <button
-                      className="btn btn-primary btncls"
-                      name={item.id}
-                      //   onClick={(e) => incQuan(e, item.id)}
-                    >
-                      {" "}
-                      <i class="fa-solid fa-plus"></i>
-                    </button>
-                    {item.quantity}
-                    <button
-                      className="btn btn-primary btncls "
-                      //   onClick={(e) => decQuan(e, item.id)}
-                    >
-                      {" "}
-                      <i class="fa-solid fa-minus"></i>
-                    </button>
-                    <button
-                      className="btn btn-danger btncls "
-                      //   onClick={(e) => delItem(e, item.id)}
-                    >
-                      {" "}
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <CartButton
+                      id={item.id}
+                      color="primary"
+                      buttonCSS="fa-solid fa-plus"
+                      apicall={cartServices.updateIncCartItem}
+                    />
+                    {"   " + item.quantity + "   "}
+
+                    <CartButton
+                      id={item.id}
+                      color="primary"
+                      buttonCSS="fa-solid fa-minus"
+                      apicall={cartServices.updateDecCartItem}
+                    />
+                    <CartButton
+                      id={item.id}
+                      color="error"
+                      buttonCSS="fa-solid fa-trash"
+                      apicall={cartServices.delCartItem}
+                    />
                   </td>
                   <td></td>
-                  {/* <td>{computeSubtotal(item.quantity, item.book_id.price)}</td> */}
+                  <td>{computeSubtotal(item.quantity, item.book_id.price)}</td>
                 </tr>
               ))}
               <tr>
                 <td colSpan={4}></td>
                 <td>Total:</td>
-                {/* <td>{computeTotal()}</td> */}
+                <td>{computeTotal()}</td>
               </tr>
               <tr>
                 <td colSpan={4}></td>
-                <td colSpan={2}>{/* <Payment cartItems={cart} /> */}</td>
+                <td colSpan={2}>
+                  <Payment cartItems={carts} />
+                </td>
               </tr>
             </table>
           </div>
-          <TableLayout
+          {/* <TableLayout
             cols={CartData.cartColumns}
             data={carts}
             options
             optionData={CartData.cartOptionData}
-          />
+          /> */}
         </>
       )}
     </>

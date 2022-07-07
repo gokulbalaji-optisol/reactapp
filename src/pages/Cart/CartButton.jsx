@@ -1,47 +1,23 @@
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import sagaActions from "redux/sagaActions";
-import { cartSelector } from "redux/slices/cart-slice";
-import { cartServices } from "services/CartServices";
 import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
-const CartButton = ({ id, mode, color, buttonCSS }) => {
-  let apicall;
-  let comp = () => {};
+const CartButton = ({ id, color, buttonCSS, apicall }) => {
   const dispatch = useDispatch();
   const handleClick = async (id) => {
-    await apicall(id)
-      .then((resp) => {
-        console.log(resp);
-        dispatch({ type: sagaActions.FETCH_CART });
-      })
-      .catch((err) => console.log(err));
-  };
-  const build = (mode) => {
-    switch (mode) {
-      case "AddToCart":
-        apicall = cartServices.addCartItem;
-
-        break;
-      case "IncQuan":
-        apicall = cartServices.updateIncCartItem;
-        break;
-      case "DecQuan":
-        apicall = cartServices.updateDecCartItem;
-        break;
-      case "DelCartItem":
-        apicall = cartServices.delCartItem;
-        break;
-      default:
-        apicall = cartServices.addCartItem;
-        break;
+    try {
+      const response = await apicall(id);
+      console.log(response);
+      toast.success(response.data);
+      dispatch({ type: sagaActions.FETCH_CART });
+    } catch (err) {
+      toast.error("Error " + err);
+      console.log(err);
     }
   };
-  useEffect(() => {
-    console.log("render");
-    build(mode);
-    console.log(apicall);
-  }, []);
+  useEffect(() => {}, []);
   useEffect(() => {
     console.log("change render");
   }, [apicall]);
@@ -52,10 +28,11 @@ const CartButton = ({ id, mode, color, buttonCSS }) => {
         onClick={(e) => {
           handleClick(id);
         }}
-        color={i.color}
+        color={color}
         variant="contained"
       >
-        <i className={i.buttonCSS}></i>
+        <i className={buttonCSS}></i>
+        <ToastContainer />
       </Button>
     </>
   );

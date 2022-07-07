@@ -15,26 +15,48 @@ export const cartOptionData = [
   {
     //buttonCSS: "fa-solid fa-plus",
     color: "primary",
-    component: (id) => (
-      <CartButton
-        mode="IncQuan"
-        id={id}
-        color="primary"
-        buttonCSS="fa-solid fa-plus"
-      />
-    ),
+    component: (id) => {
+      return (
+        <CartButton
+          id={id}
+          color="primary"
+          buttonCSS="fa-solid fa-plus"
+          apicall={cartServices.updateIncCartItem}
+        />
+      );
+    },
     mode: true,
   },
   {
     //buttonCSS: "fa-solid fa-minus",
     color: "primary",
-    component: (id) => <CartButton mode="DecQuan" />,
+    component: (id) => {
+      return (
+        <CartButton
+          id={id}
+          color="primary"
+          buttonCSS="fa-solid fa-minus"
+          apicall={cartServices.updateDecCartItem}
+        />
+      );
+    },
+    mode: true,
   },
   {
     //buttonCSS: "fa-solid fa-trash",
 
     color: "error",
-    component: (id) => <CartButton mode="DelCartItem" />,
+    component: (id) => {
+      return (
+        <CartButton
+          id={id}
+          color="error"
+          buttonCSS="fa-solid fa-trash"
+          apicall={cartServices.delCartItem}
+        />
+      );
+    },
+    mode: true,
   },
 ];
 export const CartData = { cartColumns, cartOptionData };

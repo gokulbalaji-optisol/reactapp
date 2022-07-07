@@ -18,10 +18,12 @@ export const fetchAllCart = (props) => {
     headers: { "Content-Type": "application/json" },
   });
 };
-export const addCartItem = (props) => {
-  console.log(props);
-  const data = props.data;
-  let url = ADD_CART_ITEM + `/${data.id}`;
+export const addCartItem = (id, quantity = 1) => {
+  let url = ADD_CART_ITEM;
+  let data = {
+    id,
+    quantity,
+  };
   return axiosapi({
     method: POST,
     url: url,
@@ -40,26 +42,21 @@ export const updateIncCartItem = (id) => {
   });
 };
 
-export const updateDecCartItem = (props) => {
-  console.log(props);
-  const data = props.data;
-  let url = DEC_CART_ITEM + `/${data.id}`;
+export const updateDecCartItem = (id) => {
+  console.log(id);
+  let url = DEC_CART_ITEM + `/${id}`;
   return axiosapi({
     method: GET,
     url: url,
-    data: data,
     headers: { "Content-Type": "application/json" },
   });
 };
 
-export const delCartItem = (props) => {
-  console.log(props);
-  const data = props.data;
-  let url = DELETE_CART_ITEM + `/${data.id}`;
+export const delCartItem = (id) => {
+  let url = DELETE_CART_ITEM + `/${id}`;
   return axiosapi({
     method: GET,
     url: url,
-    data: data,
     headers: { "Content-Type": "application/json" },
   });
 };
